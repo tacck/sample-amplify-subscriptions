@@ -1,0 +1,11 @@
+{
+  "include": ["src/**/*", "tests/**/*"],
+  "compilerOptions": {
+    "module": "es2015",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+    }
+  },
+  "exclude": ["node_mdoules", "dist"]
+}
