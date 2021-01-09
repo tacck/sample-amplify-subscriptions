@@ -1,0 +1,4 @@
+type OpenChat @model {
+  id: ID!
+  message: String!
+}
