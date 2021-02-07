@@ -40,3 +40,45 @@ export const deleteOpenChat = /* GraphQL */ `
     }
   }
 `;
+export const createRoomChat = /* GraphQL */ `
+  mutation CreateRoomChat(
+    $input: CreateRoomChatInput!
+    $condition: ModelRoomChatConditionInput
+  ) {
+    createRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateRoomChat = /* GraphQL */ `
+  mutation UpdateRoomChat(
+    $input: UpdateRoomChatInput!
+    $condition: ModelRoomChatConditionInput
+  ) {
+    updateRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteRoomChat = /* GraphQL */ `
+  mutation DeleteRoomChat(
+    $input: DeleteRoomChatInput!
+    $condition: ModelRoomChatConditionInput
+  ) {
+    deleteRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
