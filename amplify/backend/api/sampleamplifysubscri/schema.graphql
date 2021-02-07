@@ -2,3 +2,9 @@ type OpenChat @model {
   id: ID!
   message: String!
 }
+
+type RoomChat @model {
+  id: ID!
+  roomName: String!
+  message: String!
+}

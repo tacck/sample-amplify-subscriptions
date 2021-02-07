@@ -31,3 +31,36 @@ export const onDeleteOpenChat = /* GraphQL */ `
     }
   }
 `;
+export const onCreateRoomChat = /* GraphQL */ `
+  subscription OnCreateRoomChat {
+    onCreateRoomChat {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateRoomChat = /* GraphQL */ `
+  subscription OnUpdateRoomChat {
+    onUpdateRoomChat {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteRoomChat = /* GraphQL */ `
+  subscription OnDeleteRoomChat {
+    onDeleteRoomChat {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;

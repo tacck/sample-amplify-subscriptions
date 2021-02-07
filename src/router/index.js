@@ -15,6 +15,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "public" */ '../views/OpenChat'),
   },
+  {
+    path: '/multiroomopenchat',
+    name: 'MultiRoomOpenChat',
+    component: () =>
+      import(/* webpackChunkName: "public" */ '../views/MultiRoomOpenChat'),
+  },
 ]
 
 const router = new VueRouter({

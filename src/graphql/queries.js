@@ -28,3 +28,32 @@ export const listOpenChats = /* GraphQL */ `
     }
   }
 `;
+export const getRoomChat = /* GraphQL */ `
+  query GetRoomChat($id: ID!) {
+    getRoomChat(id: $id) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listRoomChats = /* GraphQL */ `
+  query ListRoomChats(
+    $filter: ModelRoomChatFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRoomChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        roomName
+        message
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
