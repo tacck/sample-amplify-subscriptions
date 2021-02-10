@@ -31,33 +31,25 @@
       centered
       dark
     >
-      <v-tab href="#room1">room1</v-tab>
-      <v-tab href="#room2">room2</v-tab>
+      <v-tab
+        v-for="(room, index) in rooms"
+        :key="index"
+        :href="'#' + room"
+        @click="setSubscribeByRoomName(room)"
+        >{{ room }}</v-tab
+      >
     </v-tabs>
     <v-card flat>
       <v-tabs-items v-model="roomName">
-        <v-tab-item value="room1">
+        <v-tab-item v-for="(room, index) in rooms" :key="index" :value="room">
           <v-row class="pa-2">
             <v-col cols="6">
-              <ChatList title="Input" :list="messages.room1"></ChatList>
+              <ChatList title="Input" :list="messages[room]"></ChatList>
             </v-col>
             <v-col cols="6">
               <ChatList
                 title="Subscriptions"
-                :list="subscriptionMessages.room1"
-              ></ChatList>
-            </v-col>
-          </v-row>
-        </v-tab-item>
-        <v-tab-item value="room2">
-          <v-row class="pa-2">
-            <v-col cols="6">
-              <ChatList title="Input" :list="messages.room2"></ChatList>
-            </v-col>
-            <v-col cols="6">
-              <ChatList
-                title="Subscriptions"
-                :list="subscriptionMessages.room2"
+                :list="subscriptionMessages[room]"
               ></ChatList>
             </v-col>
           </v-row>
@@ -70,7 +62,7 @@
 <script>
 import { API, graphqlOperation } from 'aws-amplify'
 import { createRoomChat } from '@/graphql/mutations'
-import { onCreateRoomChat } from '@/graphql/subscriptions'
+import { onCreateRoomChatByRoomName } from '@/graphql/subscriptions'
 
 import ChatList from '@/components/ChatList'
 
@@ -80,6 +72,7 @@ export default {
     return {
       roomName: null,
       inputMessage: '',
+      rooms: ['room1', 'room2'],
       messages: {
         room1: [],
         room2: [],
@@ -88,26 +81,17 @@ export default {
         room1: [],
         room2: [],
       },
-      onCreateOpenChatSubscription: null,
+      onCreateMultiRoomChatSubscriptions: {
+        room1: null,
+        room2: null,
+      },
     }
   },
   created: function() {
-    this.onCreateOpenChatSubscription = API.graphql(
-      graphqlOperation(onCreateRoomChat),
-    ).subscribe({
-      next: ({ provider, value }) => {
-        console.log({ provider, value })
-        this.subscriptionMessages[value.data.onCreateRoomChat.roomName].push(
-          value.data.onCreateRoomChat,
-        )
-      },
-    })
+    this.setSubscribeByRoomName('room1')
   },
   beforeDestroy: function() {
-    if (this.onCreateOpenChatSubscription) {
-      this.onCreateOpenChatSubscription.unsubscribe()
-      this.onCreateOpenChatSubscription = null
-    }
+    this.clearSubscriptions()
   },
   methods: {
     sendMessage: async function() {
@@ -120,6 +104,28 @@ export default {
 
       this.messages[this.roomName].push(message.data.createRoomChat)
       this.inputMessage = ''
+    },
+    setSubscribeByRoomName(roomName) {
+      this.clearSubscriptions()
+
+      this.onCreateMultiRoomChatSubscriptions.room1 = API.graphql(
+        graphqlOperation(onCreateRoomChatByRoomName, { roomName: roomName }),
+      ).subscribe({
+        next: ({ provider, value }) => {
+          console.log({ provider, value })
+          this.subscriptionMessages[
+            value.data.onCreateRoomChatByRoomName.roomName
+          ].push(value.data.onCreateRoomChatByRoomName)
+        },
+      })
+    },
+    clearSubscriptions() {
+      this.rooms.forEach(room => {
+        if (this.onCreateMultiRoomChatSubscriptions[room]) {
+          this.onCreateMultiRoomChatSubscriptions[room].unsubscribe()
+        }
+        this.onCreateMultiRoomChatSubscriptions[room] = null
+      })
     },
   },
 }

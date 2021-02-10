@@ -8,3 +8,8 @@ type RoomChat @model {
   roomName: String!
   message: String!
 }
+
+type Subscription {
+  onCreateRoomChatByRoomName(roomName: String!): RoomChat
+    @aws_subscribe(mutations: ["createRoomChat"])
+}
