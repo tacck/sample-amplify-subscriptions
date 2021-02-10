@@ -107,7 +107,7 @@ export default {
     setSubscribeByRoomName(roomName) {
       this.clearSubscriptions()
 
-      this.onCreateMultiRoomChatSubscriptions.room1 = API.graphql(
+      this.onCreateMultiRoomChatSubscriptions[roomName] = API.graphql(
         graphqlOperation(onCreateRoomChatByRoomName, { roomName: roomName }),
       ).subscribe({
         next: ({ provider, value }) => {
