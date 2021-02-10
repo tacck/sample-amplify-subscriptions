@@ -5,10 +5,9 @@
         <v-card>
           <v-card-title>Multi-room Open Chat</v-card-title>
           <v-card-text
-            >Anyone can use this chat. All subscriptions are receved, and
-            received messages are set in the message list for each
-            room.</v-card-text
-          >
+            >Anyone can use this chat. Now, we receive messages only selected
+            room.
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
