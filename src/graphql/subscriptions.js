@@ -1,6 +1,17 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateRoomChatByRoomName = /* GraphQL */ `
+  subscription OnCreateRoomChatByRoomName($roomName: String!) {
+    onCreateRoomChatByRoomName(roomName: $roomName) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateOpenChat = /* GraphQL */ `
   subscription OnCreateOpenChat {
     onCreateOpenChat {
