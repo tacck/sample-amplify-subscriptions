@@ -20,4 +20,6 @@ type CloseRoomChat
 type Subscription {
   onCreateRoomChatByRoomName(roomName: String!): RoomChat
     @aws_subscribe(mutations: ["createRoomChat"])
+  onCreateCloseRoomChatByRoomName(roomName: String!): CloseRoomChat
+    @aws_subscribe(mutations: ["createCloseRoomChat"])
 }
