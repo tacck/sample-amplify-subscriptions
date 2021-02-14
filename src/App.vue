@@ -48,6 +48,14 @@ export default {
           title: 'Open Chat',
           to: '/openchat',
         },
+        {
+          title: 'Multi-Room Chat',
+          to: '/multiroomopenchat',
+        },
+        {
+          title: 'Sign In',
+          to: '/signin',
+        },
       ],
     }
   },

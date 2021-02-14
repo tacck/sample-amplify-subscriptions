@@ -21,6 +21,10 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "public" */ '../views/MultiRoomOpenChat'),
   },
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import(/* webpackChunkName: "public" */ '../views/SignIn'),
+  },
 ]
 
 const router = new VueRouter({
