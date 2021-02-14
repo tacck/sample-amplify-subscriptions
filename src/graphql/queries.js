@@ -57,3 +57,34 @@ export const listRoomChats = /* GraphQL */ `
     }
   }
 `;
+export const getCloseRoomChat = /* GraphQL */ `
+  query GetCloseRoomChat($id: ID!) {
+    getCloseRoomChat(id: $id) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listCloseRoomChats = /* GraphQL */ `
+  query ListCloseRoomChats(
+    $filter: ModelCloseRoomChatFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCloseRoomChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        roomName
+        message
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

@@ -53,6 +53,10 @@ export default {
           to: '/multiroomopenchat',
         },
         {
+          title: 'Close Chat',
+          to: '/closechat',
+        },
+        {
           title: 'Sign In',
           to: '/signin',
         },

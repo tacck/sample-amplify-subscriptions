@@ -21,6 +21,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "public" */ '../views/MultiRoomOpenChat'),
   },
+  {
+    path: '/closechat',
+    name: 'CloseChat',
+    component: () =>
+      import(/* webpackChunkName: "public" */ '../views/CloseChat'),
+  },
+  {
     path: '/signin',
     name: 'SignIn',
     component: () => import(/* webpackChunkName: "public" */ '../views/SignIn'),

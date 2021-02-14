@@ -9,6 +9,14 @@ type RoomChat @model {
   message: String!
 }
 
+type CloseRoomChat
+  @model
+  @auth(rules: [{ allow: owner, provider: userPools }]) {
+  id: ID!
+  roomName: String!
+  message: String!
+}
+
 type Subscription {
   onCreateRoomChatByRoomName(roomName: String!): RoomChat
     @aws_subscribe(mutations: ["createRoomChat"])
