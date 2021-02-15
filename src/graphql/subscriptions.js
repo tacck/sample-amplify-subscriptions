@@ -75,3 +75,39 @@ export const onDeleteRoomChat = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCloseRoomChat = /* GraphQL */ `
+  subscription OnCreateCloseRoomChat($owner: String!) {
+    onCreateCloseRoomChat(owner: $owner) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateCloseRoomChat = /* GraphQL */ `
+  subscription OnUpdateCloseRoomChat($owner: String!) {
+    onUpdateCloseRoomChat(owner: $owner) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteCloseRoomChat = /* GraphQL */ `
+  subscription OnDeleteCloseRoomChat($owner: String!) {
+    onDeleteCloseRoomChat(owner: $owner) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

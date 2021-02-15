@@ -82,3 +82,48 @@ export const deleteRoomChat = /* GraphQL */ `
     }
   }
 `;
+export const createCloseRoomChat = /* GraphQL */ `
+  mutation CreateCloseRoomChat(
+    $input: CreateCloseRoomChatInput!
+    $condition: ModelCloseRoomChatConditionInput
+  ) {
+    createCloseRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateCloseRoomChat = /* GraphQL */ `
+  mutation UpdateCloseRoomChat(
+    $input: UpdateCloseRoomChatInput!
+    $condition: ModelCloseRoomChatConditionInput
+  ) {
+    updateCloseRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteCloseRoomChat = /* GraphQL */ `
+  mutation DeleteCloseRoomChat(
+    $input: DeleteCloseRoomChatInput!
+    $condition: ModelCloseRoomChatConditionInput
+  ) {
+    deleteCloseRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
