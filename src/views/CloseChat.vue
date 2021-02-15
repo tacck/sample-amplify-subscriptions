@@ -61,7 +61,7 @@
 <script>
 import { Auth, API, graphqlOperation } from 'aws-amplify'
 import { createCloseRoomChat } from '@/graphql/mutations'
-import { onCreateCloseRoomChat } from '@/graphql/subscriptions'
+import { onCreateCloseRoomChatByRoomName } from '@/graphql/subscriptions'
 
 import ChatList from '@/components/ChatList'
 
@@ -110,13 +110,15 @@ export default {
       this.clearSubscriptions()
 
       this.onCreateMultiRoomChatSubscriptions[roomName] = API.graphql(
-        graphqlOperation(onCreateCloseRoomChat, { owner: this.user.username }),
+        graphqlOperation(onCreateCloseRoomChatByRoomName, {
+          roomName: roomName,
+        }),
       ).subscribe({
         next: ({ provider, value }) => {
           console.log({ provider, value })
           this.subscriptionMessages[
-            value.data.onCreateCloseRoomChat.roomName
-          ].push(value.data.onCreateCloseRoomChat)
+            value.data.onCreateCloseRoomChatByRoomName.roomName
+          ].push(value.data.onCreateCloseRoomChatByRoomName)
         },
       })
     },

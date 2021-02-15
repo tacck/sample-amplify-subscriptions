@@ -12,6 +12,18 @@ export const onCreateRoomChatByRoomName = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCloseRoomChatByRoomName = /* GraphQL */ `
+  subscription OnCreateCloseRoomChatByRoomName($roomName: String!) {
+    onCreateCloseRoomChatByRoomName(roomName: $roomName) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const onCreateOpenChat = /* GraphQL */ `
   subscription OnCreateOpenChat {
     onCreateOpenChat {
