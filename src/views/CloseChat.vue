@@ -60,6 +60,7 @@
 
 <script>
 import { Auth, API, graphqlOperation } from 'aws-amplify'
+import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api-graphql'
 import { createCloseRoomChat } from '@/graphql/mutations'
 import { onCreateCloseRoomChatByRoomName } from '@/graphql/subscriptions'
 
@@ -109,11 +110,13 @@ export default {
     setSubscribeByRoomName(roomName) {
       this.clearSubscriptions()
 
-      this.onCreateMultiRoomChatSubscriptions[roomName] = API.graphql(
-        graphqlOperation(onCreateCloseRoomChatByRoomName, {
+      this.onCreateMultiRoomChatSubscriptions[roomName] = API.graphql({
+        query: onCreateCloseRoomChatByRoomName,
+        variables: {
           roomName: roomName,
-        }),
-      ).subscribe({
+        },
+        authMode: GRAPHQL_AUTH_MODE.API_KEY,
+      }).subscribe({
         next: ({ provider, value }) => {
           console.log({ provider, value })
           this.subscriptionMessages[

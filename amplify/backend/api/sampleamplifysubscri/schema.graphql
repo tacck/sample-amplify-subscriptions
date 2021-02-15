@@ -11,7 +11,12 @@ type RoomChat @model {
 
 type CloseRoomChat
   @model
-  @auth(rules: [{ allow: owner, provider: userPools }]) {
+  @auth(
+    rules: [
+      { allow: owner, provider: userPools }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
   id: ID!
   roomName: String!
   message: String!
@@ -22,4 +27,5 @@ type Subscription {
     @aws_subscribe(mutations: ["createRoomChat"])
   onCreateCloseRoomChatByRoomName(roomName: String!): CloseRoomChat
     @aws_subscribe(mutations: ["createCloseRoomChat"])
+    @aws_api_key
 }
