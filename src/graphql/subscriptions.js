@@ -88,7 +88,7 @@ export const onDeleteRoomChat = /* GraphQL */ `
   }
 `;
 export const onCreateCloseRoomChat = /* GraphQL */ `
-  subscription OnCreateCloseRoomChat($owner: String!) {
+  subscription OnCreateCloseRoomChat($owner: String) {
     onCreateCloseRoomChat(owner: $owner) {
       id
       roomName
@@ -100,7 +100,7 @@ export const onCreateCloseRoomChat = /* GraphQL */ `
   }
 `;
 export const onUpdateCloseRoomChat = /* GraphQL */ `
-  subscription OnUpdateCloseRoomChat($owner: String!) {
+  subscription OnUpdateCloseRoomChat($owner: String) {
     onUpdateCloseRoomChat(owner: $owner) {
       id
       roomName
@@ -112,7 +112,7 @@ export const onUpdateCloseRoomChat = /* GraphQL */ `
   }
 `;
 export const onDeleteCloseRoomChat = /* GraphQL */ `
-  subscription OnDeleteCloseRoomChat($owner: String!) {
+  subscription OnDeleteCloseRoomChat($owner: String) {
     onDeleteCloseRoomChat(owner: $owner) {
       id
       roomName
