@@ -28,6 +28,22 @@ const routes = [
       import(/* webpackChunkName: "public" */ '../views/CloseChat'),
   },
   {
+    path: '/responselateroomchatadmin',
+    name: 'ResponseLateRoomChatAdmin',
+    component: () =>
+      import(
+        /* webpackChunkName: "public" */ '../views/ResponseLateRoomChatAdmin'
+      ),
+  },
+  {
+    path: '/responselateroomchatclient',
+    name: 'ResponseLateRoomChatClient',
+    component: () =>
+      import(
+        /* webpackChunkName: "public" */ '../views/ResponseLateRoomChatClient'
+      ),
+  },
+  {
     path: '/signin',
     name: 'SignIn',
     component: () => import(/* webpackChunkName: "public" */ '../views/SignIn'),
