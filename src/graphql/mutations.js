@@ -1,6 +1,18 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const postResponses = /* GraphQL */ `
+  mutation PostResponses($input: PostResponsesInput) {
+    postResponses(input: $input) {
+      roomName
+      items {
+        id
+        roomName
+        message
+      }
+    }
+  }
+`;
 export const createOpenChat = /* GraphQL */ `
   mutation CreateOpenChat(
     $input: CreateOpenChatInput!
@@ -118,6 +130,51 @@ export const deleteCloseRoomChat = /* GraphQL */ `
     $condition: ModelCloseRoomChatConditionInput
   ) {
     deleteCloseRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const createResponseLateRoomChat = /* GraphQL */ `
+  mutation CreateResponseLateRoomChat(
+    $input: CreateResponseLateRoomChatInput!
+    $condition: ModelResponseLateRoomChatConditionInput
+  ) {
+    createResponseLateRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateResponseLateRoomChat = /* GraphQL */ `
+  mutation UpdateResponseLateRoomChat(
+    $input: UpdateResponseLateRoomChatInput!
+    $condition: ModelResponseLateRoomChatConditionInput
+  ) {
+    updateResponseLateRoomChat(input: $input, condition: $condition) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteResponseLateRoomChat = /* GraphQL */ `
+  mutation DeleteResponseLateRoomChat(
+    $input: DeleteResponseLateRoomChatInput!
+    $condition: ModelResponseLateRoomChatConditionInput
+  ) {
+    deleteResponseLateRoomChat(input: $input, condition: $condition) {
       id
       roomName
       message

@@ -38,6 +38,7 @@ amplify/backend/api/*
 !amplify/backend/api/*/
 amplify/backend/api/*/*
 !amplify/backend/api/*/schema.graphql
+!amplify/backend/api/*/resolvers/
 
 build/
 dist/
