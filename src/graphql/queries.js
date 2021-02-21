@@ -88,3 +88,38 @@ export const listCloseRoomChats = /* GraphQL */ `
     }
   }
 `;
+export const getResponseLateRoomChat = /* GraphQL */ `
+  query GetResponseLateRoomChat($id: ID!) {
+    getResponseLateRoomChat(id: $id) {
+      id
+      roomName
+      message
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listResponseLateRoomChats = /* GraphQL */ `
+  query ListResponseLateRoomChats(
+    $filter: ModelResponseLateRoomChatFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listResponseLateRoomChats(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        roomName
+        message
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

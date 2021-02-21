@@ -22,10 +22,57 @@ type CloseRoomChat
   message: String!
 }
 
+type ResponseLateRoomChat
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      { allow: owner, provider: userPools }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  roomName: String!
+  message: String!
+  createdAt: AWSDateTime
+}
+
+type Mutation {
+  postResponses(input: PostResponsesInput): PostResponsesOutput
+    @function(name: "sampleamplifysubscri1993d7a9-${env}")
+}
+
+input PostResponsesInput {
+  roomName: String!
+  items: [PostResponsesInputItem]
+}
+
+input PostResponsesInputItem {
+  id: ID!
+  roomName: String!
+  message: String!
+  owner: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+type PostResponsesOutput @aws_api_key @aws_cognito_user_pools {
+  roomName: String!
+  items: [PostResponsesOutputItem]
+}
+
+type PostResponsesOutputItem @aws_api_key @aws_cognito_user_pools {
+  id: ID!
+  roomName: String!
+  message: String!
+}
+
 type Subscription {
   onCreateRoomChatByRoomName(roomName: String!): RoomChat
     @aws_subscribe(mutations: ["createRoomChat"])
   onCreateCloseRoomChatByRoomName(roomName: String!): CloseRoomChat
     @aws_subscribe(mutations: ["createCloseRoomChat"])
+    @aws_api_key
+  onPostResponses(roomName: String!): PostResponsesOutput
+    @aws_subscribe(mutations: ["postResponses"])
     @aws_api_key
 }

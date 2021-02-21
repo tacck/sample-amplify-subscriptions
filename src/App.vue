@@ -57,6 +57,14 @@ export default {
           to: '/closechat',
         },
         {
+          title: 'Response Late Room Chat Admin',
+          to: '/responselateroomchatadmin',
+        },
+        {
+          title: 'Response Late Room Chat Client',
+          to: '/responselateroomchatclient',
+        },
+        {
           title: 'Sign In',
           to: '/signin',
         },
